@@ -2,7 +2,19 @@
 - name: demo playbook
   hosts: all
   tasks:
-    - name: create user
-      ansible.builtin.user:
-        name: "{{ new_user }}"
-        state: "{{ user_state }}"
+    # - name: create user
+    #   ansible.builtin.user:
+    #     name: "{{ new_user }}"
+    #     state: "{{ user_state }}"
+    - name: install packages
+      ansible.builtin.dnf:
+        name:
+          - httpd
+          - cockpit
+        state: present
+
+    - name: ensure service running
+      ansible.builtin.service:
+        name: cockpit.socket
+        state: started
+        enabled: true
