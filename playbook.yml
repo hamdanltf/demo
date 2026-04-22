@@ -1,0 +1,8 @@
+---
+- name: demo playbook
+  hosts: all
+  tasks:
+    - name: create user
+      ansible.builtin.user:
+        name: kambing
+        state: present
