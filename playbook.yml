@@ -5,4 +5,4 @@
     - name: create user
       ansible.builtin.user:
         name: "{{ new_user }}"
-        state: present
+        state: "{{ user_state }}"
